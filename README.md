@@ -2,4 +2,6 @@
 
 Python version: 3.4
 
-Create, edit, delete Events
+Flask web app to create, edit, delete Events
+
+![alt tag](event-calendar/screenshots/ss4.jpg)
