@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calendar</title>
+	<script type="text/javascript">
+		var a={{cal}};
+		var e={{events|safe}};
+		var year={{year}};
+		var month={{month}}
+		var months=["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
+	</script>
+	<link rel="stylesheet" type="text/css" href="static/styles.css">
+</head>
+
+
+<body>
+<table>
+<tr>
+<td width=10% bgcolor=#2bc493>
+<table>
+<br><br>
+<tr>
+<img width=48% src="static/left.png" alt="previous" onclick="prev()">
+<img width=48% src="static/right.png" alt="next" onclick="next()">
+</tr>
+
+<p id="month"></p>
+<p id="year"></p>
+</table>
+</td>
+<td>
+<table vertical-align>
+<tr>
+
+<td class="weeks">MONDAY</td><td class="weeks">TUESDAY</td><td class="weeks">WEDNESDAY</td>
+<td class="weeks">THURSDAY</td><td class="weeks">FRIDAY</td><td class="weeks">SATURDAY</td><td class="weeks">SUNDAY</td>
+</tr></table>
+<table id="cal">
+</table>
+</td>
+</tr>
+</table>
+
+
+
+<div id="ModalNew" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" onclick="closemodals()">&times;</span>
+      <h3 align="center" id="modaldate"></h3>
+    </div>
+    <div class="modal-body">
+      <form action="/new_event" method="POST">
+		<input id="start_date" type="hidden" name="start_date" readonly>
+		<input id="ename" type="text" name="ename" placeholder="Event Name"> <br>
+		<span class="left">
+		<label for="start">Start Time</label>
+		<input id="start" type="time" name="start" placeholder="Start Time">
+		</span>
+		<span class="right">
+		<label for="end">End Time</label>
+		<input id="end" type="time" name="end" placeholder="End Time"><br>
+		</span>
+		<input id="place" type="text" name="place" placeholder="Location"><br>
+		<input id="desc" type="text" name="desc" placeholder="Description">
+		<button type="button" onclick="newEntry(document.getElementById('start_date').value, document.getElementById('ename').value,document.getElementById('start').value,document.getElementById('end').value, document.getElementById('place').value,document.getElementById('desc').value)">Add Event</button>	
+		</form>
+    </div>
+  </div>
+</div>
+
+
+<div id="ModalEvent" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" onclick="closemodals()">&times;</span>
+      <h3 align="center" id="eventdetailupdate"> </h3>
+    </div>
+    <div class="modal-body">
+      <form>
+	<input id="mid" type="hidden" name="id" readonly>
+	<input id="msd" type="date" name="start_date">
+	<input id="mename" type="text" name="ename">
+	<span class="left">
+	<label for="start">Start Time</label>
+	<input id="mstart" type="time" name="start">
+	</span>
+	<span class="right">
+	<label for="end">End Time</label>
+	<input id="mend" type="time" name="end">
+	</span>
+	<input id="mplace" type="text" name="place">
+	<input id="mdesc" type="text" name="desc">
+	<button type="button" onclick="update_event()">Update Event</button>
+	<button type="button" onclick="delete_event()">Delete Event</button>	
+	</form>
+    </div>
+  </div>
+</div>
+
+<script src="static/functions.js"></script>
+</body>
+</html>
