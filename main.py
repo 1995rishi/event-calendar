@@ -6,8 +6,7 @@ from bson import ObjectId
 
 app = Flask(__name__)
 
-#client = MongoClient('mongodb://localhost:27017/Events')
-client = MongoClient('mongodb://rishi1995:helloworld@cluster0-shard-00-00-fcb85.mongodb.net:27017,cluster0-shard-00-01-fcb85.mongodb.net:27017,cluster0-shard-00-02-fcb85.mongodb.net:27017/Events?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin')
+client = MongoClient('mongodb://localhost:27017/Events')
 db=client.Events
 coll=db.events
 
